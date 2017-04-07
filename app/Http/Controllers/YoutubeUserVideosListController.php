@@ -33,13 +33,18 @@ class YoutubeUserVideosListController extends Controller
      */
     public function index(Request $request)
     {
-        $request->flash();
+        if ($request->has('username'))
+        {
+            $request->flash();
 
-        return view('youtube',
-            [
-                'data' => $this->getDataFromUser($request)
-            ]
-        );
+            return view('youtube',
+                [
+                    'data' => $this->getDataFromUser($request)
+                ]
+            );
+        } else {
+            return view('youtube');
+        }
     }
 
     /**

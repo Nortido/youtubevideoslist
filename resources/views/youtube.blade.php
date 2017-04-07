@@ -11,9 +11,9 @@
       {!! Form::submit('Get it!') !!}
     {!! Form::close() !!}
 
-    @include('blocks.pagination', ['data' => $data])
+    @if (isset($data['items']) && !empty($data['items']))
 
-    @if (isset($data['items']))
+      @include('blocks.pagination', ['data' => $data])
 
       @foreach($data['items'] as $video)
         <div>
